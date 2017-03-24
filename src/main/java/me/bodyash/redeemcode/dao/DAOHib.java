@@ -7,7 +7,6 @@ import javax.persistence.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 public class DAOHib implements DAO{
 	
@@ -30,7 +29,6 @@ public class DAOHib implements DAO{
 			sess.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			//rollback?
 		}
 	}
 
@@ -49,7 +47,6 @@ public class DAOHib implements DAO{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			//rollback?
 		}
 		return false;
 	}
@@ -60,10 +57,10 @@ public class DAOHib implements DAO{
 			sess.beginTransaction();
 			Query q = sess.createQuery("SELECT c FROM Code WHERE c.code=" + code);
 			List res = q.getResultList();
-			if (res.isEmpty()){
-				return false;
-			}else{
+			if (!res.isEmpty()){
 				return true;
+			}else{
+				return false;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,7 +77,6 @@ public class DAOHib implements DAO{
 			sess.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			//rollback?
 		}	
 	}
 
@@ -95,7 +91,8 @@ public class DAOHib implements DAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "";
+		//i`m cheking for NULL, before using the codetype C: Believe me!
+		return null;
 	}
 	
 	private Session getSession() throws HibernateException {
