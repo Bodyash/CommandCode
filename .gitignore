@@ -61,3 +61,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.prefs
+*.MF
+/target/*

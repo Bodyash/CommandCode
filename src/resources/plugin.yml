@@ -1,0 +1,17 @@
+name: RedeemCode
+version: "1.2"
+author: Bodyash
+main: me.bodyash.redeemcode.Main
+commands:
+    generateCode:
+        description: Allows you to generate a code for a specific goody.
+        permissions: redeemcode.generatecode
+        default: op
+    redeemCode:
+        description: Allows you to redeem a specific code and gives you the goods.
+        permissions: redeemcode.redeem
+        default: op
+    deleteCode:
+        description: Allows you to remove a specific code.
+        permissions: redeemcode.deletecode
+        default: op
