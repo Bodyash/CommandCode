@@ -1,4 +1,4 @@
-package me.bodyash.redeemcode.listeners;
+package me.bodyash.commandcode.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
@@ -6,7 +6,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import me.bodyash.redeemcode.utils.updater.SpigotUpdater;
+import me.bodyash.commandcode.utils.updater.SpigotUpdater;
 
 public class OpListener implements Listener {
 	

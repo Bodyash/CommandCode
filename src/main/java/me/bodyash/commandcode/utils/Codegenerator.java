@@ -1,4 +1,4 @@
-package me.bodyash.redeemcode.utils;
+package me.bodyash.commandcode.utils;
 
 import org.apache.commons.lang.RandomStringUtils;
 

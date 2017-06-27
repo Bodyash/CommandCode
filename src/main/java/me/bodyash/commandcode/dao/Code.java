@@ -1,4 +1,4 @@
-package me.bodyash.redeemcode.dao;
+package me.bodyash.commandcode.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

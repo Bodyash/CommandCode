@@ -1,4 +1,4 @@
-package me.bodyash.redeemcode.utils;
+package me.bodyash.commandcode.utils;
 
 import java.io.File;
 import java.io.IOException;

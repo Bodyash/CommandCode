@@ -1,17 +1,17 @@
-package me.bodyash.redeemcode;
+package me.bodyash.commandcode;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.hibernate.SessionFactory;
 
-import me.bodyash.redeemcode.dao.DAOHib;
-import me.bodyash.redeemcode.dao.DAOYaml;
-import me.bodyash.redeemcode.listeners.CommandListener;
-import me.bodyash.redeemcode.listeners.OpListener;
-import me.bodyash.redeemcode.utils.ConfigUtil;
-import me.bodyash.redeemcode.utils.HibernateUtil;
-import me.bodyash.redeemcode.utils.updater.SpigotUpdater;
+import me.bodyash.commandcode.dao.DAOHib;
+import me.bodyash.commandcode.dao.DAOYaml;
+import me.bodyash.commandcode.listeners.CommandListener;
+import me.bodyash.commandcode.listeners.OpListener;
+import me.bodyash.commandcode.utils.ConfigUtil;
+import me.bodyash.commandcode.utils.HibernateUtil;
+import me.bodyash.commandcode.utils.updater.SpigotUpdater;
 
 public class Main extends JavaPlugin{
 	

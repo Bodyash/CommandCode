@@ -1,4 +1,4 @@
-package me.bodyash.redeemcode.dao;
+package me.bodyash.commandcode.dao;
 
 import java.util.List;
 

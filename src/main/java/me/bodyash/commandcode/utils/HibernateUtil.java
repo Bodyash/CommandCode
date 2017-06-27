@@ -1,13 +1,11 @@
-package me.bodyash.redeemcode.utils;
+package me.bodyash.commandcode.utils;
 
 import java.util.Properties;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-import me.bodyash.redeemcode.dao.Code;
+import me.bodyash.commandcode.dao.Code;
 
 public class HibernateUtil {
 	private SessionFactory sessionFactory;

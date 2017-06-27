@@ -1,4 +1,4 @@
-package me.bodyash.redeemcode.listeners;
+package me.bodyash.commandcode.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -6,9 +6,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 
-import me.bodyash.redeemcode.dao.DAO;
-import me.bodyash.redeemcode.utils.Codegenerator;
-import me.bodyash.redeemcode.utils.ConfigUtil;
+import me.bodyash.commandcode.dao.DAO;
+import me.bodyash.commandcode.utils.Codegenerator;
+import me.bodyash.commandcode.utils.ConfigUtil;
+
 
 public class CommandListener {
 
@@ -30,10 +31,46 @@ public class CommandListener {
 		if (label.equalsIgnoreCase("deletecode")) {
 			return deletecode(sender, command, label, args);
 		}
+		if (label.equalsIgnoreCase("code")) {
+			return code(sender, command, label, args);
+		}
 		return false;
 	}
 
 
+
+	private boolean code(CommandSender sender, Command command, String label, String[] args) {
+		if (args.length != 0){
+			if (args.length == 1){
+				if (args[0].equalsIgnoreCase("add")){
+					sender.sendMessage(config.getChatLogo() + ChatColor.DARK_RED + " Wromg command promt, try this: ");
+					sender.sendMessage(ChatColor.GREEN + "/code add <type>");
+					return false;
+				}else if (args[0].equalsIgnoreCase("delete")){
+					sender.sendMessage(config.getChatLogo() + ChatColor.DARK_RED + " Wromg command promt, try this: ");
+					sender.sendMessage(ChatColor.GREEN + "/code delete <code>");
+					return false;
+				}else{
+					return this.redeemcode(sender, command, label, args);
+				}
+			}else{
+				if (args[0].equalsIgnoreCase("add")){
+					String[] type = {args[1]};
+					return this.generatecode(sender, command, label, type);
+				}else if (args[0].equalsIgnoreCase("delete")){
+					String[] code = {args[1]};
+					return this.deletecode(sender, command, label, code);
+				}else{
+					sender.sendMessage(config.getChatLogo() + ChatColor.DARK_RED + " Wromg command promt, try this: ");
+					sender.sendMessage(ChatColor.GREEN + "/code <code>");
+				}
+			}
+		}else{
+			sender.sendMessage(config.getChatLogo() + ChatColor.DARK_RED + " Wromg command promt, try this: ");
+			sender.sendMessage(ChatColor.GREEN + "/redeemcode <code>");
+		}
+		return false;
+	}
 
 	private boolean redeemcode(CommandSender sender, Command command, String label, String[] args) {
 		if (args.length == 0){
@@ -45,7 +82,7 @@ public class CommandListener {
 			sender.sendMessage(ChatColor.DARK_RED + "This command cannot be executed from console, sorry");
 			return false;
 		}
-		if (sender.hasPermission("redeemcode.redeem")) {
+		if (sender.hasPermission("commandcode.redeem")) {
 			if (dao.checkCode(args[0])){
 				String type = dao.getCodeType(args[0]);
 				if (type != null){
@@ -61,7 +98,7 @@ public class CommandListener {
 			sender.sendMessage(
 					this.config.getChatLogo() + ChatColor.DARK_RED + " You don`t have permission to do that.");
 		}
-		return false;
+		return true;
 	}
 
 	private boolean generatecode(CommandSender sender, Command command, String label, String[] args) {
@@ -70,7 +107,7 @@ public class CommandListener {
 			sender.sendMessage(ChatColor.GREEN + "/generatecode <type>");
 			return false;
 		}
-		if (sender.hasPermission("redeemcode.generatecode")) {
+		if (sender.hasPermission("commandcode.generatecode")) {
 			if (config.getCodetypes().containsKey(args[0])){
 				String code;
 				do{
@@ -95,7 +132,7 @@ public class CommandListener {
 			sender.sendMessage(ChatColor.GREEN + "/deletecode <code>");
 			return false;
 		}
-		if (sender.hasPermission("redeemcode.deletecode")){
+		if (sender.hasPermission("commandcode.deletecode")){
 			if(dao.checkCode(args[0])){
 				dao.removeCode(args[0]);
 				return true;

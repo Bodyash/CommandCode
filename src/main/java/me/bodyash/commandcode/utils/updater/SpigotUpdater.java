@@ -1,4 +1,4 @@
-package me.bodyash.redeemcode.utils.updater;
+package me.bodyash.commandcode.utils.updater;
 
 import java.io.BufferedReader;
 import java.io.IOException;
